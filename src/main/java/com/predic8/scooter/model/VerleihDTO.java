@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 public class VerleihDTO {
 
+    String fahrtId;
     String scooterId;
     String userId;
     LocalDateTime verleihBeginn;
@@ -11,11 +12,13 @@ public class VerleihDTO {
     public VerleihDTO() {
     }
 
+
     public VerleihDTO(String scooterId, String userId, LocalDateTime verleihBeginn) {
         this.scooterId = scooterId;
         this.userId = userId;
         this.verleihBeginn = verleihBeginn;
     }
+
 
     public String getScooterId() {
         return scooterId;
@@ -39,5 +42,13 @@ public class VerleihDTO {
 
     public void setVerleihBeginn(LocalDateTime verleihBeginn) {
         this.verleihBeginn = verleihBeginn;
+    }
+
+    public String getFahrtId() {
+        return fahrtId;
+    }
+
+    public void setFahrtId(String fahrtId) {
+        this.fahrtId = fahrtId;
     }
 }

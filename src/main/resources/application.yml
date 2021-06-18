@@ -10,12 +10,5 @@ spring:
       local-datacenter: datacenter1
       keyspace-name: scooter
       schema-action: CREATE_IF_NOT_EXISTS
-
 server:
   port: 8083
-  #      contact-points: 127.0.0.1
-  #      username: cassandra
-  #      password: cassandra
-  #      keyspace: accountservicedb
-  #      port: 9042
-  #      schema-action: "CREATE_IF_NOT_EXIST"

@@ -11,6 +11,8 @@ import java.time.LocalDateTime;
 public class Fahrt {
 
     @PrimaryKeyColumn(type = PrimaryKeyType.PARTITIONED)
+    String fahrtId;
+    @PrimaryKeyColumn
     String scooterId;
     @PrimaryKeyColumn
     String userId;
@@ -22,7 +24,8 @@ public class Fahrt {
     public Fahrt() {
     }
 
-    public Fahrt(String scooterId, String userId, LocalDateTime start, LocalDateTime end) {
+    public Fahrt(String id, String scooterId, String userId, LocalDateTime start, LocalDateTime end) {
+        this.fahrtId = id;
         this.scooterId = scooterId;
         this.userId = userId;
         this.start = start;
@@ -30,6 +33,7 @@ public class Fahrt {
     }
 
     public Fahrt(VerleihDTO verleihDTO) {
+        this.fahrtId = verleihDTO.getFahrtId();
         this.userId = verleihDTO.getUserId();
         this.scooterId = verleihDTO.getScooterId();
         this.start = verleihDTO.getVerleihBeginn();
@@ -65,5 +69,13 @@ public class Fahrt {
 
     public void setEnd(LocalDateTime end) {
         this.end = end;
+    }
+
+    public String getFahrtId() {
+        return fahrtId;
+    }
+
+    public void setFahrtId(String fahrtId) {
+        this.fahrtId = fahrtId;
     }
 }

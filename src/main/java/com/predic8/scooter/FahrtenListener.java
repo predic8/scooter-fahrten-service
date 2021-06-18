@@ -33,7 +33,7 @@ public class FahrtenListener {
     @KafkaListener(topics = "scooter.rueckgabe")
     public void rueckgabeListener(String rueckgabe) throws JsonProcessingException {
         RueckgabeDTO rueckgabeDTO = om.readValue(rueckgabe, RueckgabeDTO.class);
-        Optional<Fahrt> byId = fahrtRepository.findByScooterId(rueckgabeDTO.getScooterId());
+        Optional<Fahrt> byId = fahrtRepository.findByFahrtId(rueckgabeDTO.getFahrtId());
 
         if (!byId.isPresent()) {
             log.error("Unable to find Scooter " + rueckgabeDTO.getScooterId());

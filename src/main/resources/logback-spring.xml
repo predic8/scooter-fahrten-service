@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+
+    <property name="LOGS" value="./logs" />
+
+    <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FileAppender"
+              class="ch.qos.logback.core.FileAppender">
+        <file>${LOGS}/spring-boot-logger.log</file>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>%d %p %C{1.} [%t] %m%n</Pattern>
+        </encoder>
+    </appender>
+
+    <root level="info">
+        <appender-ref ref="FileAppender" />
+        <appender-ref ref="Console" />
+    </root>
+
+    <logger name="de.predic8" level="trace" additivity="false">
+        <appender-ref ref="FileAppender" />
+        <appender-ref ref="Console" />
+    </logger>
+
+    <logger name="org.springframework.web.filter.CommonsRequestLoggingFilter" level="debug" additivity="false">
+        <appender-ref ref="FileAppender" />
+        <appender-ref ref="Console" />
+    </logger>
+
+    <logger name="io.jaegertracing.internal.reporters.LoggingReporter" level="warn" additivity="false">
+        <appender-ref ref="FileAppender" />
+        <appender-ref ref="Console" />
+    </logger>
+
+</configuration>

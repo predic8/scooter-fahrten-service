@@ -9,5 +9,6 @@ import java.util.Optional;
 @Repository
 public interface FahrtRepository extends CassandraRepository<Fahrt, String> {
 
-    Optional<Fahrt> findByScooterId(String scooterId);
+    Optional<Fahrt> findByFahrtId(String scooterId);
+
 }
