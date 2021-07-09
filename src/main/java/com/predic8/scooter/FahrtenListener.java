@@ -27,22 +27,12 @@ public class FahrtenListener {
 
     @KafkaListener(topics = "scooter.ausleihe")
     public void listener(String verleih) throws JsonProcessingException {
-        fahrtRepository.save(new Fahrt(om.readValue(verleih, VerleihDTO.class)));
+        // TODO
     }
 
     @KafkaListener(topics = "scooter.rueckgabe")
     public void rueckgabeListener(String rueckgabe) throws JsonProcessingException {
-        RueckgabeDTO rueckgabeDTO = om.readValue(rueckgabe, RueckgabeDTO.class);
-        Optional<Fahrt> byId = fahrtRepository.findByFahrtId(rueckgabeDTO.getFahrtId());
-
-        if (!byId.isPresent()) {
-            log.error("Unable to find Scooter " + rueckgabeDTO.getScooterId());
-            return;
-        }
-
-        Fahrt fahrt = byId.get();
-        fahrt.setEnd(rueckgabeDTO.getRueckgabe());
-        fahrtRepository.save(fahrt);
+        // TODO
     }
 
 }
